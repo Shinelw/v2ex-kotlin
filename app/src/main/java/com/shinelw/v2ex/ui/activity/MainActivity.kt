@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.widget.TableLayout
-import android.widget.Toast
 import com.shinelw.v2ex.R
-import com.shinelw.v2ex.api.V2exApi
 import com.shinelw.v2ex.ui.adapter.HomeViewPagerAdapter
 import com.shinelw.v2ex.ui.fragment.TopicFragment
 import kotlinx.android.synthetic.main.layout_content.*

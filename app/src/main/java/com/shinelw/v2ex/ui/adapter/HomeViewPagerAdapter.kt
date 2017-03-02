@@ -17,16 +17,8 @@ class HomeViewPagerAdapter(val context: Context, val fm: FragmentManager, val fr
         return fragmentList[position]
     }
 
-    override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
-        return view == `object`
-    }
-
     override fun getCount(): Int {
         return tabTitle.size
-    }
-
-    override fun getItemPosition(`object`: Any?): Int {
-        return `object` as Int
     }
 
     override fun getPageTitle(position: Int): CharSequence {
