@@ -25,16 +25,15 @@ class RecyclerViewAdapter(val context: Context) : RecyclerView.Adapter<ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.topicTitle?.text = "1111"
     }
 
 
      public class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
-         var topicTitle : TextView
+         //var topicTitle : TextView
 //         var userName : TextView
 //         var userImg : ImageView
         init {
-            topicTitle = itemView?.findViewById(R.id.topName) as TextView
+            //topicTitle = itemView?.findViewById(R.id.topName) as TextView
         }
 
     }

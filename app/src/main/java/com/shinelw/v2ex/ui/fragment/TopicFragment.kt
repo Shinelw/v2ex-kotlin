@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.shinelw.v2ex.R
 import com.shinelw.v2ex.ui.adapter.RecyclerViewAdapter
+import com.shinelw.v2ex.ui.widget.TopicItemDecoration
 
 
 /**
@@ -24,6 +25,8 @@ class TopicFragment(val type: String) : Fragment() {
         mRecyclerView.adapter = RecyclerViewAdapter(context)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.itemAnimator = DefaultItemAnimator()
+        val itemDecoration: TopicItemDecoration = TopicItemDecoration(1, TopicItemDecoration.UNIT_DP, context)
+        mRecyclerView.addItemDecoration(itemDecoration)
         return view
     }
 }
