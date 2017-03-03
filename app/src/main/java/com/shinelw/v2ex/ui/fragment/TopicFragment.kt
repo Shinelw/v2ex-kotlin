@@ -61,7 +61,7 @@ class TopicFragment(val type: String) : Fragment() {
         return view
     }
 
-    fun getList(){
+    private fun getList(){
         val retrofit: Retrofit = Retrofit.Builder()
                     .baseUrl(V2exApi.HTTP_API_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -72,8 +72,8 @@ class TopicFragment(val type: String) : Fragment() {
             override fun onResponse(call: Call<List<Topic>>?, response: Response<List<Topic>>?) {
                 isRefresh = false
                 swipeLayout.isRefreshing = false
-                if (response != null) {
-                    list = response.body()
+                if (response?.body() != null) {
+                    list = response?.body()
                 }
                 if (mRecyclerView.adapter != null){
                     (mRecyclerView.adapter as RecyclerViewAdapter).setData(list)

@@ -5,6 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * Created by peixuan on 2017/3/1.
@@ -37,8 +38,8 @@ interface V2exApi {
     /**
      * 获取某个节点的主题
      */
-    @GET("nodes/show.json?name={name}")
-    fun getTopicListByNode(@Path("name") name: String): Call<List<Topic>>
+    @GET("topics/show.json")
+    fun getTopicListByNode(@Query("node_name") name: String): Call<List<Topic>>
 
     /**
      * 获取所有节点
@@ -49,26 +50,26 @@ interface V2exApi {
     /**
      * 获取主题内容
      */
-    @GET("topics/show.json?id={id}")
-    fun getTopicsContent(@Path("id") id: Int)
+    @GET("topics/show.json")
+    fun getTopicsContent(@Query("id") id: Int)
 
     /**
      * 根据用户名获取用户主页
      */
-    @GET("api/members/show.json?username={username}")
-    fun getUserHomePagerByName(@Path("username") username: String)
+    @GET("api/members/show.json")
+    fun getUserHomePagerByName(@Query("username") username: String)
 
     /**
      * 根据用户id获取用户主页
      */
-    @GET("api/members/show.json?id={username}")
-    fun getUserHomePagerById(@Path("username") username: String)
+    @GET("api/members/show.json")
+    fun getUserHomePagerById(@Query("username") username: String)
 
     /**
      * 根据主题id获取回复列表
      */
-    @GET("replies/show.json?topic_id={id}")
-    fun getAllReplies(@Path("id") id: Int)
+    @GET("replies/show.json")
+    fun getAllReplies(@Query("topic_id") id: Int)
 
 
 
