@@ -67,7 +67,7 @@ class TopicFragment(val type: String) : Fragment() {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
         val vtexapi: V2exApi = retrofit.create(V2exApi::class.java)
-        var call: Call<List<Topic>> = vtexapi.getLatestList()
+        var call: Call<List<Topic>> = vtexapi.getTopicListByNode(type)
         call.enqueue(object: Callback<List<Topic>>{
             override fun onResponse(call: Call<List<Topic>>?, response: Response<List<Topic>>?) {
                 isRefresh = false

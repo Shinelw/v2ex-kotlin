@@ -38,7 +38,7 @@ interface V2exApi {
      * 获取某个节点的主题
      */
     @GET("nodes/show.json?name={name}")
-    fun getNodeInfo(@Path("name") name: String)
+    fun getTopicListByNode(@Path("name") name: String): Call<List<Topic>>
 
     /**
      * 获取所有节点
