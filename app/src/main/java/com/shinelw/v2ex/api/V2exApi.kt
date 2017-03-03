@@ -1,6 +1,6 @@
 package com.shinelw.v2ex.api
 
-import com.shinelw.v2ex.model.Topic
+import com.shinelw.v2ex.model.bean.Topic
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET

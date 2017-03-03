@@ -1,4 +1,4 @@
-package com.shinelw.v2ex.model
+package com.shinelw.v2ex.model.bean
 
 import com.shinelw.v2ex.model.bean.Memeber
 import com.shinelw.v2ex.model.bean.Node

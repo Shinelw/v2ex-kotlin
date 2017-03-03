@@ -1,6 +1,6 @@
 package com.shinelw.v2ex.contract
 
-import com.shinelw.v2ex.model.Topic
+import com.shinelw.v2ex.model.bean.Topic
 
 /**
  * Created by peixuan on 2017/3/3.

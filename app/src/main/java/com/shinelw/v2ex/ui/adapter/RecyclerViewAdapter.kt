@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.shinelw.v2ex.R
-import com.shinelw.v2ex.model.Topic
+import com.shinelw.v2ex.model.bean.Topic
 import com.shinelw.v2ex.ui.adapter.RecyclerViewAdapter.ViewHolder
 import com.shinelw.v2ex.ui.widget.SquareImageView
 

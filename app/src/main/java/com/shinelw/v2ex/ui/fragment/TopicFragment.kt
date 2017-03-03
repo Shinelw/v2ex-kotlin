@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.shinelw.v2ex.R
 import com.shinelw.v2ex.api.V2exApi
-import com.shinelw.v2ex.model.Topic
+import com.shinelw.v2ex.model.bean.Topic
 import com.shinelw.v2ex.ui.adapter.RecyclerViewAdapter
 import com.shinelw.v2ex.ui.widget.TopicItemDecoration
 import org.jetbrains.anko.toast
