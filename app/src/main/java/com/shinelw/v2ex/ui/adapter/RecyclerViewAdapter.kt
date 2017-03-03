@@ -9,14 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.shinelw.v2ex.R
-import com.shinelw.v2ex.model.TopicModel
+import com.shinelw.v2ex.model.Topic
 import com.shinelw.v2ex.ui.adapter.RecyclerViewAdapter.ViewHolder
 import com.shinelw.v2ex.ui.widget.SquareImageView
 
 /**
  * Created by peixuan on 2017/3/2.
  */
-class RecyclerViewAdapter(val context: Context, val topicList: List<TopicModel>?) : RecyclerView.Adapter<ViewHolder>() {
+class RecyclerViewAdapter(val context: Context, var topicList: List<Topic>?) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view : View = LayoutInflater.from(context).inflate(R.layout.item_topic, parent, false)
@@ -29,7 +29,7 @@ class RecyclerViewAdapter(val context: Context, val topicList: List<TopicModel>?
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         if (itemCount > 0 && holder is ViewHolder) {
-            val topic: TopicModel = topicList!!.get(position)
+            val topic: Topic = topicList!!.get(position)
             holder.userName.text = topic.member.username
             holder.topicComments.text = topic.replies.toString()
             holder.topicTips.text = topic.last_modified.toString()
@@ -38,6 +38,10 @@ class RecyclerViewAdapter(val context: Context, val topicList: List<TopicModel>?
             Glide.with(context).load("http:" + topic.member.avatar_mini).into(holder.userImg)
 
         }
+    }
+
+    fun setData(topicList: List<Topic>?) {
+        this.topicList = topicList
     }
 
 
@@ -58,5 +62,6 @@ class RecyclerViewAdapter(val context: Context, val topicList: List<TopicModel>?
         }
 
     }
+
 
 }

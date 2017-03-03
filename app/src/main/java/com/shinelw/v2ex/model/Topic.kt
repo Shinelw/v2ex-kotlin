@@ -1,9 +1,12 @@
 package com.shinelw.v2ex.model
 
+import com.shinelw.v2ex.model.bean.Memeber
+import com.shinelw.v2ex.model.bean.Node
+
 /**
  * Created by peixuan on 2017/3/2.
  */
-data class TopicModel(
+data class Topic(
         val id: Int,
         val title: String,
         val content: String,
@@ -12,5 +15,5 @@ data class TopicModel(
         val created: Long,
         val last_modified: Long,
         val last_touched: Long,
-        val member: MemeberModel,
-        val node: NodeModel)
+        val member: Memeber,
+        val node: Node)

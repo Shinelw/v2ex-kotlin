@@ -1,6 +1,6 @@
 package com.shinelw.v2ex.api
 
-import com.shinelw.v2ex.model.TopicModel
+import com.shinelw.v2ex.model.Topic
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -26,7 +26,7 @@ interface V2exApi {
      * 获取最新列表
      */
     @GET("topics/latest.json")
-    fun getLatestList(): Call<List<TopicModel>>
+    fun getLatestList(): Call<List<Topic>>
 
     /**
      * 获取最热列表

@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.shinelw.v2ex.R
 import com.shinelw.v2ex.api.V2exApi
-import com.shinelw.v2ex.model.TopicModel
+import com.shinelw.v2ex.model.Topic
 import com.shinelw.v2ex.ui.adapter.RecyclerViewAdapter
 import com.shinelw.v2ex.ui.widget.TopicItemDecoration
 import org.jetbrains.anko.toast
@@ -21,6 +21,7 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Response
+import java.util.*
 
 
 /**
@@ -30,12 +31,19 @@ class TopicFragment(val type: String) : Fragment() {
     lateinit var mRecyclerView: RecyclerView
     var isRefresh : Boolean = true
     lateinit var swipeLayout: SwipeRefreshLayout
+    var list: List<Topic> = ArrayList()
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View? = inflater?.inflate(R.layout.fragment_list, container, false)
 
         swipeLayout = view?.findViewById(R.id.swipe_refresh) as SwipeRefreshLayout
         swipeLayout.isRefreshing = true
+        mRecyclerView = view?.findViewById(R.id.recyclerView) as RecyclerView
+        mRecyclerView.adapter = RecyclerViewAdapter(context,list)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.itemAnimator = DefaultItemAnimator()
         getList()
+        val itemDecoration: TopicItemDecoration = TopicItemDecoration(1, TopicItemDecoration.UNIT_DP, context)
+        mRecyclerView.addItemDecoration(itemDecoration)
         swipeLayout.setColorSchemeColors(Color.BLUE,
                 Color.GREEN,
                 Color.YELLOW,
@@ -59,20 +67,21 @@ class TopicFragment(val type: String) : Fragment() {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
         val vtexapi: V2exApi = retrofit.create(V2exApi::class.java)
-        var call: Call<List<TopicModel>> = vtexapi.getLatestList()
-        call.enqueue(object: Callback<List<TopicModel>>{
-            override fun onResponse(call: Call<List<TopicModel>>?, response: Response<List<TopicModel>>?) {
-                mRecyclerView = view?.findViewById(R.id.recyclerView) as RecyclerView
-                mRecyclerView.adapter = RecyclerViewAdapter(context,response?.body())
-                mRecyclerView.layoutManager = LinearLayoutManager(context)
-                mRecyclerView.itemAnimator = DefaultItemAnimator()
-                val itemDecoration: TopicItemDecoration = TopicItemDecoration(1, TopicItemDecoration.UNIT_DP, context)
-                mRecyclerView.addItemDecoration(itemDecoration)
+        var call: Call<List<Topic>> = vtexapi.getLatestList()
+        call.enqueue(object: Callback<List<Topic>>{
+            override fun onResponse(call: Call<List<Topic>>?, response: Response<List<Topic>>?) {
                 isRefresh = false
                 swipeLayout.isRefreshing = false
+                if (response != null) {
+                    list = response.body()
+                }
+                if (mRecyclerView.adapter != null){
+                    (mRecyclerView.adapter as RecyclerViewAdapter).setData(list)
+                    mRecyclerView.adapter.notifyDataSetChanged()
+                }
             }
 
-            override fun onFailure(call: Call<List<TopicModel>>?, t: Throwable?) {
+            override fun onFailure(call: Call<List<Topic>>?, t: Throwable?) {
                 context.toast(t.toString())
             }
 
