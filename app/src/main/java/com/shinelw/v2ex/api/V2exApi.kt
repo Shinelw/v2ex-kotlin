@@ -71,7 +71,4 @@ interface V2exApi {
     @GET("replies/show.json")
     fun getAllReplies(@Query("topic_id") id: Int)
 
-
-
-
 }

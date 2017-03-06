@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             layout_tab.addTab(tab)
             fragmentList.add(TopicFragment(type[i]))
         }
+        view_pager.offscreenPageLimit = 5
         view_pager.adapter = HomeViewPagerAdapter(this, fragmentManager, fragmentList, typeStr)
         layout_tab.setupWithViewPager(view_pager)
 
