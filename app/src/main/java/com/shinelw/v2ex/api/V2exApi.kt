@@ -11,7 +11,6 @@ import retrofit2.http.Query
  * Created by peixuan on 2017/3/1.
  */
 interface V2exApi {
-
     /**
      * baseURL
      */
