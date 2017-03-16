@@ -62,7 +62,7 @@ class TopicFragment(val type: String) : Fragment(), TopicListContract.View{
             (mRecyclerView.adapter as RecyclerViewAdapter).setData(list)
             mRecyclerView.adapter.notifyDataSetChanged()
             isRefresh = false
-            swipeLayout.isRefreshing = false;
+            swipeLayout.isRefreshing = false
         }
     }
 }
